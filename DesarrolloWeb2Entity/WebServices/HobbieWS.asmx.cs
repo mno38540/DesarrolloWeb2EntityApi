@@ -25,5 +25,12 @@ namespace DesarrolloWeb2Entity.WebServices
             HobbieServices hobbieServices = new HobbieServices();
             return hobbieServices.GetAllHobbies();
         }
+
+        [WebMethod]
+        public HobbiesDto HobbiesGetByIdl(string code)
+        {
+            HobbieServices hobbieServices = new HobbieServices();
+            return hobbieServices.GetHobbiesById(code);
+        }
     }
 }

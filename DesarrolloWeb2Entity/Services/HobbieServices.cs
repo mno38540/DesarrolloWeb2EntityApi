@@ -23,5 +23,18 @@ namespace DesarrolloWeb2Entity.Services
                                               }).ToList();
             return resultado;
         }
+
+        public HobbiesDto GetHobbiesById(string code)
+        {
+            var resultado = (from h in db.Hobbie
+                             where h.Codigo == code
+                             select new HobbiesDto 
+                             {
+                                 Codigo = h.Codigo,
+                                 Nombre = h.Nombre,
+                                 Descripcion = h.Descripcion
+                             }).ToList();
+            return resultado.FirstOrDefault();
+        }
     }
 }

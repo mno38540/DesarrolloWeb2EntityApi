@@ -91,7 +91,7 @@
     <Content Include="WebServices\HobbieWS.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\EstusianteDto.cs" />
+    <Compile Include="Dtos\EstudianteDto.cs" />
     <Compile Include="Dtos\HobbiesDto.cs" />
     <Compile Include="Model\Estudiante.cs">
       <DependentUpon>Model1.tt</DependentUpon>
