@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DesarrolloWeb2Entity.Dtos;
+using DesarrolloWeb2Entity.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,9 +20,10 @@ namespace DesarrolloWeb2Entity.WebServices
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public EstudianteHobbieDto GetHobbiesByStudent(string id)
         {
-            return "Hola a todos";
+           EstudianteHobbiesServices estudianteHobbiesServices = new EstudianteHobbiesServices();
+            return estudianteHobbiesServices.GetAllStudentHobbies(id);
         }
     }
 }

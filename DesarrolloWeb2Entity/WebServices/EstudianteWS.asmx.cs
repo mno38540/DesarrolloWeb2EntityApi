@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DesarrolloWeb2Entity.Dtos;
+using DesarrolloWeb2Entity.Model;
+using DesarrolloWeb2Entity.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,11 +19,20 @@ namespace DesarrolloWeb2Entity.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class EstudianteWS : System.Web.Services.WebService
     {
+        private AlumnosEntities db = new AlumnosEntities();
 
         [WebMethod]
-        public string HelloWorld()
+        public List<EstudianteDto> GetAllStuden()
         {
-            return "Hola a todos";
+            EstudianteService estudianteService = new EstudianteService();
+            return estudianteService.GetAllStudents();
+        }
+
+        [WebMethod]
+        public EstudianteDto StudentById(string code)
+        {
+            EstudianteService estudianteService = new EstudianteService();
+            return estudianteService.GetStudentById(code);
         }
     }
 }

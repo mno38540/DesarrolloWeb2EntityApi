@@ -17,21 +17,26 @@ namespace DesarrolloWeb2Entity.Services
                                           {
                                               Identificacion = e.Identificacion,
                                               Nombre = e.Nombre,
+                                              Apellido = e.Apelllido,
+                                              Direccion = e.Direccion,
+                                              Telefono = e.Telefono,
                                           }).ToList();
             return resultado;
         }
 
-        public HobbiesDto GetHobbiesById(string code)
+        public EstudianteDto GetStudentById(string code)
         {
-            var resultado = (from h in db.Hobbie
-                             where h.Codigo == code
-                             select new HobbiesDto
+            EstudianteDto resultado = (from e in db.Estudiante
+                             where e.Identificacion == code
+                             select new EstudianteDto
                              {
-                                 Codigo = h.Codigo,
-                                 Nombre = h.Nombre,
-                                 Descripcion = h.Descripcion
-                             }).ToList();
-            return resultado.FirstOrDefault();
+                                 Identificacion = e.Identificacion,
+                                 Nombre = e.Nombre,
+                                 Apellido = e.Apelllido,
+                                 Direccion = e.Direccion,
+                                 Telefono = e.Telefono,
+                             }).FirstOrDefault();
+            return resultado;
         }
     }
 }
