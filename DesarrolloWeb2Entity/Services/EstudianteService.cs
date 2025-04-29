@@ -61,5 +61,61 @@ namespace DesarrolloWeb2Entity.Services
                 return ex.Message;
             }
         }
+        public string DeleteEstudiante(string identificacion)
+        {
+            try
+            {
+                var estudiante = db.Estudiante.FirstOrDefault(p => p.Identificacion == identificacion);
+                if (estudiante == null)
+                {
+                    return "Estusiante No Encontrado";
+                }
+                foreach (var hob in db.Estusiante_Hobbie)
+                {
+                   if(hob.Identificacion == identificacion) 
+                    {
+                        db.Estusiante_Hobbie.Remove(hob);
+                    }
+                }
+                db.Estudiante.Remove(estudiante);
+                db.SaveChanges();
+                return "Estusiante Eliminado";
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        public string CreateEstudiante(string identificacion, string nombre, string Apellido, string direccion, string telefono)
+            {
+                try
+                {
+                   var newStuden = new Estudiante
+                   {
+                       Identificacion = identificacion,
+                       Nombre = nombre,
+                       Apelllido = Apellido,
+                       Direccion = direccion,
+                       Telefono = telefono
+                   };
+                var validacion = db.Estudiante.Any(x => x.Identificacion == identificacion);
+                if (validacion) 
+                {
+                    return "ya existe";
+                }
+
+                db.Estudiante.Add(newStuden);
+                    db.SaveChanges();
+                    return "Producto Actualizado correctamente";
+
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
+            }
+
+        
     }
 }

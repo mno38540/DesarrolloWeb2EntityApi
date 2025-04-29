@@ -40,5 +40,18 @@ namespace DesarrolloWeb2Entity.WebServices
             EstudianteService estudianteService = new EstudianteService();
             return estudianteService.UpdateEstudiante(identificacion,nombre,Apellido,direccion,telefono);
         }
+        [WebMethod]
+        public string StudentDelete(string identificacion)
+        {
+            EstudianteService estudianteService = new EstudianteService();
+            return estudianteService.DeleteEstudiante(identificacion);
+        }
+
+        [WebMethod]
+        public string StudentCreate(string identificacion, string nombre, string Apellido, string direccion, string telefono)
+        {
+            EstudianteService estudianteService = new EstudianteService();
+            return estudianteService.CreateEstudiante(identificacion, nombre, Apellido, direccion, telefono);
+        }
     }
 }
