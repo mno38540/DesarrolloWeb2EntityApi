@@ -38,5 +38,28 @@ namespace DesarrolloWeb2Entity.Services
                              }).FirstOrDefault();
             return resultado;
         }
+        public string UpdateEstudiante(string identificacion , string nombre, string Apellido,string direccion , string telefono) 
+        {
+            try 
+            {
+                var estudiante = db.Estudiante.FirstOrDefault(p => p.Identificacion == identificacion);
+                if (estudiante == null) 
+                {
+                    return "Estusiante No Encontrado";
+                }
+                estudiante.Identificacion = identificacion;
+                estudiante.Nombre = nombre;
+                estudiante .Apelllido = Apellido;
+                estudiante.Direccion = direccion;
+                estudiante.Telefono = telefono;
+                db.SaveChanges();
+                return "Producto Actualizado correctamente";
+
+            }
+            catch(Exception ex)  
+            {
+                return ex.Message;
+            }
+        }
     }
 }
